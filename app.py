@@ -32,42 +32,42 @@ st.markdown("""
             background-color: #1B4F72;
             color: white;
         }
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0px;
+        .center-header {
+            text-align: center;
+            margin-bottom: 10px;
         }
-        .brand-title {
-            font-size: 28px;
+        .title-text {
+            font-size: 32px;
             font-weight: bold;
             color: #1B4F72;
         }
-        .sub-text {
-            font-size: 14px;
+        .subtitle-text {
+            font-size: 16px;
             color: #555;
         }
     </style>
 """, unsafe_allow_html=True)
 
 # ------------------------------
-# Top Navigation Bar
+# Centered Header
 # ------------------------------
-col1, col2 = st.columns([6, 1])
+st.markdown("""
+    <div class='center-header'>
+        <div class='title-text'>🩺 Diasense AI Assistant</div>
+        <div class='subtitle-text'>Guideline-Based Diabetes AI Chatbot</div>
+    </div>
+""", unsafe_allow_html=True)
 
-with col1:
-    st.markdown("<div class='brand-title'>🩺 Diasense AI Assistant</div>", unsafe_allow_html=True)
-    st.markdown("<div class='sub-text'>Guideline-Based Diabetes AI Chatbot</div>", unsafe_allow_html=True)
-
+col1, col2, col3 = st.columns([3,1,3])
 with col2:
-    if st.button("Clear"):
+    if st.button("🗑 Clear Chat"):
         st.session_state.messages = []
         st.rerun()
 
 st.markdown("---")
 
 # ------------------------------
-# Session State for Chat History
+# Session State
 # ------------------------------
 if "messages" not in st.session_state:
     st.session_state.messages = []
