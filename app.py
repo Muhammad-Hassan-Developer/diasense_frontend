@@ -5,21 +5,30 @@ import streamlit as st
 # Page Config
 # ------------------------------
 st.set_page_config(
-    page_title="Welcome Test",
-    page_icon="👋",
+    page_title="Diasense AI Assistant",
+    page_icon="🩺",
     layout="centered",
 )
 
 # ------------------------------
-# Welcome Page
+# Header
 # ------------------------------
-st.title("Diasense AI assistant!")
-st.write("This is the AI assistant for Diabetes with american book 2026 (care of diabetes).")
+st.title("🩺 Diasense AI Assistant")
+st.caption("Based on American Diabetes Care Guidelines 2026")
 
-# Optional button
-if st.button("Click Me"):
-    st.success("Deployment works! 🎉")
+st.write(
+    "Welcome! This AI assistant helps answer diabetes-related "
+    "questions using guideline-based knowledge."
+)
 
+# ------------------------------
+# Demo Button
+# ------------------------------
+if st.button("Test Deployment"):
+    st.success("Frontend deployed successfully! 🎉")
+
+# ------------------------------
 # Footer
+# ------------------------------
 st.markdown("---")
 st.markdown("Made with ❤️ using Streamlit")
