@@ -58,7 +58,8 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-col1, col2, col3 = st.columns([3,1,3])
+# Clear Button aligned right
+col1, col2 = st.columns([6,1])
 with col2:
     if st.button("🗑 Clear Chat"):
         st.session_state.messages = []
