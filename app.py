@@ -13,8 +13,8 @@ st.set_page_config(
 # ------------------------------
 # Welcome Page
 # ------------------------------
-st.title("👋 Welcome to Streamlit Deployment Test!")
-st.write("This is a simple page to test deployment of your Streamlit app.")
+st.title("Diasense AI assistant!")
+st.write("This is the AI assistant for Diabetes with american book 2026 (care of diabetes).")
 
 # Optional button
 if st.button("Click Me"):
