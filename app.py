@@ -49,6 +49,16 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ------------------------------
+# ------------------------------
+# Top Right Clear Button
+# ------------------------------
+col_top1, col_top2 = st.columns([8,1])
+with col_top2:
+    if st.button("🗑 Clear Chat"):
+        st.session_state.messages = []
+        st.rerun()
+
+# ------------------------------
 # Centered Header
 # ------------------------------
 st.markdown("""
@@ -57,13 +67,6 @@ st.markdown("""
         <div class='subtitle-text'>Guideline-Based Diabetes AI Chatbot</div>
     </div>
 """, unsafe_allow_html=True)
-
-# Clear Button aligned right
-col1, col2 = st.columns([6,1])
-with col2:
-    if st.button("🗑 Clear Chat"):
-        st.session_state.messages = []
-        st.rerun()
 
 st.markdown("---")
 
