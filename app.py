@@ -50,15 +50,6 @@ st.markdown("""
 
 # ------------------------------
 # ------------------------------
-# Top Right Clear Button
-# ------------------------------
-col_top1, col_top2 = st.columns([8,1])
-with col_top2:
-    if st.button("🗑 Clear Chat"):
-        st.session_state.messages = []
-        st.rerun()
-
-# ------------------------------
 # Centered Header
 # ------------------------------
 st.markdown("""
