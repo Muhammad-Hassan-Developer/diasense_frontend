@@ -7,7 +7,7 @@ import streamlit as st
 st.set_page_config(
     page_title="Diasense AI Assistant",
     page_icon="🩺",
-    layout="wide",
+    layout="centered",
 )
 
 # ------------------------------
@@ -23,41 +23,46 @@ st.markdown("""
             padding: 10px;
         }
         .stButton>button {
-            border-radius: 10px;
+            border-radius: 8px;
             background-color: #2E86C1;
             color: white;
-            font-weight: bold;
+            font-weight: 600;
         }
         .stButton>button:hover {
             background-color: #1B4F72;
             color: white;
         }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0px;
+        }
+        .brand-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1B4F72;
+        }
+        .sub-text {
+            font-size: 14px;
+            color: #555;
+        }
     </style>
 """, unsafe_allow_html=True)
 
 # ------------------------------
-# Sidebar
+# Top Navigation Bar
 # ------------------------------
-with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/3774/3774299.png", width=100)
-    st.title("Diasense AI")
-    st.markdown("---")
-    st.write("AI-powered Diabetes Assistant")
+col1, col2 = st.columns([6, 1])
 
-    if st.button("🗑 Clear Chat"):
+with col1:
+    st.markdown("<div class='brand-title'>🩺 Diasense AI Assistant</div>", unsafe_allow_html=True)
+    st.markdown("<div class='sub-text'>Guideline-Based Diabetes AI Chatbot</div>", unsafe_allow_html=True)
+
+with col2:
+    if st.button("Clear"):
         st.session_state.messages = []
         st.rerun()
-
-    st.markdown("---")
-    st.caption("Demo Version | Upwork Portfolio")
-
-# ------------------------------
-# Header Section
-# ------------------------------
-st.markdown("""
-    <h1 style='text-align: center; color: #1B4F72;'>🩺 Diasense AI Assistant</h1>
-    <p style='text-align: center; font-size:18px;'>Guideline-Based Diabetes AI Chatbot</p>
-""", unsafe_allow_html=True)
 
 st.markdown("---")
 
@@ -68,14 +73,11 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # ------------------------------
-# Chat Container
+# Chat Messages
 # ------------------------------
-chat_container = st.container()
-
-with chat_container:
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
 
 # ------------------------------
 # Chat Input
@@ -83,14 +85,12 @@ with chat_container:
 user_input = st.chat_input("Ask a diabetes-related question...")
 
 if user_input:
-    # Store User Message
     st.session_state.messages.append({"role": "user", "content": user_input})
 
     with st.chat_message("user"):
         st.markdown(user_input)
 
-    # Simulated AI Response (Replace with Backend API)
-    bot_response = f"Thank you for your question. \n\nYou asked: **{user_input}** \n\nThis is a demo AI-generated response."
+    bot_response = f"Thank you for your question.\n\nYou asked: **{user_input}**\n\nThis is a demo AI-generated response."
 
     st.session_state.messages.append({"role": "assistant", "content": bot_response})
 
@@ -102,6 +102,6 @@ if user_input:
 # ------------------------------
 st.markdown("---")
 st.markdown(
-    "<div style='text-align:center;'>Made with ❤️ using Streamlit | © 2026 Diasense AI</div>",
+    "<div style='text-align:center; font-size:13px; color:gray;'>© 2026 Diasense AI | Built with Streamlit</div>",
     unsafe_allow_html=True
 )
